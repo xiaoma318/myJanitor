@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Marked Source</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet" media="screen">
+    <script src="js/hmacsha1.js"></script>
+    <script src="js/awssigner.js"></script>
+    <script src="js/scratchpad.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script>
+        function invokeRequest(flag) {
+            var form = document.forms[0];
+            var accessKeyId =  parent.navbar.getAccessKeyId();
+            var secretKey =  parent.navbar.getSecretAccessKey();
+           // var accessKeyId="AKIAJR3XOWMQKVZXHOYQ";
+           // var secretKey="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";
+            var domain = document.getElementById('domain').value ;
+            if(flag==1){
+                $('#SelectExpression').val("select Name,markTime, expectedTerminationTime,terminationReason,notificationTime from "+domain+" where state='MARKED' AND optOutOfJanitor='false' ");
+            }else{
+               $('#SelectExpression').val("select * from "+domain+" where state='MARKED' AND optOutOfJanitor='false' ");
+            }
+
+          
+            var url = generateSignedURL("Select",form, accessKeyId, secretKey, "https://sdb.amazonaws.com", "2009-04-15");
+            var postFormArea = document.getElementById("PostFormArea");
+            postFormArea.innerHTML = getFormFieldsFromUrl(url);
+            var postForm = document.getElementById("PostForm");
+            
+            postForm.submit();
+        }
+
+       
+    </script>
+
+    
+  </head>
+
+  <body marginheight="0" marginwidth="0" bottommargin="0" rightmargin="0" leftmargin="0" topmargin="0">
+    <form name="myform" action="" enctype="application/x-www-form-urlencoded" method="get">
+      <div class="event">
+        <h3> Search Maked Resource</h3>
+        <div class="well" style="text-align:center">        
+          <input type="text" title="AWS SimpleDB Domain Name" class="form-control" style="width:250px;display:inline" id='domain' value='SIMIAN_ARMY' >
+          <input type="hidden" name="SelectExpression" id='SelectExpression' />
+          <div class="btn-group" style="margin-left:10px">
+             <button type="button" class="btn btn-primary" onclick="invokeRequest(1)" style="width:90px">  Simple  </button>
+             <button type="button" class="btn btn-primary" onclick="invokeRequest(2)" style="width:90px">Advanced</button> 
+          </div>
+        </div>
+      </div>
+     <div style="width:700px;margin:auto">
+       <hr>
+       <footer style="font-family: Verdana, Geneva, sans-serif;font-size:11px">
+          <p> © Janitor Monkey GUI Version 1.0 by CM </p>
+        </footer>
+     </div>
+      
+    </form>
+    <form id="PostForm" name="PostForm" target="_blank" action="https://sdb.amazonaws.com" enctype="application/x-www-form-urlencoded" method="get">
+      <div id="PostFormArea"></div>
+    </form>
+   
+  </body>
+</html>
+
+
+
+

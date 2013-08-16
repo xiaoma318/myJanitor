@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Janitor Monkey</title>
+        
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <style>
+            .header{
+                font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+                font-size: 40px;
+                margin-left:5px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        
+        <div class="page-header" style="margin:0 auto;width:600px " >               
+            <img src="images/aws.png" width="200"> <font class="header"> Janitor Monkey </font>
+        </div>      
+        <div class="navbar navbar-inverse" >
+            <div class="navbar-inner" style="width:800px;margin:auto">  
+                <ul class="nav navbar-nav">
+                    <li><a href="Select.html" target="main">Marked Resource</a></li>
+                    <li><a href="index.jsp" target="main">New Event</a></li> 
+                </ul>
+                <ul class="nav navbar-nav pull-right">     
+
+                    <li> 
+                            <input 
+                               
+                                style="width:250px;margin:10px 5px" 
+                                placeholder="AWS Access Key"
+                                type="text"
+                                id="AWSAccessKeyId"
+                                name="AWSAccessKeyId"/>
+                                
+                                <input 
+                                   
+                                    style="width:250px;margin:10px 5px" 
+                                    placeholder="AWS Secret Key" 
+                                    type="text"
+                                    id="AWSSecretAccessKey"
+                                    name="AWSSecretAccessKey"/>
+                           
+                    </li>
+
+               </ul>
+	        </div>
+        </div>
+                            
+                
+            
+                  
+                    
+              
+        
+        <script>
+            function getAccessKeyId() {
+                return document.getElementById('AWSAccessKeyId').value;
+            
+            }
+            function getSecretAccessKey() {
+                return document.getElementById('AWSSecretAccessKey').value;
+            
+            }
+        </script>
+    </body>
+</html>

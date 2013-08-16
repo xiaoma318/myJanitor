@@ -1,0 +1,21 @@
+.page-header{
+  width: 800px;
+  margin: 20px auto;
+  text-align: center;
+}
+.well{
+ 
+  overflow: auto;
+  margin: 10px;
+  display: block;
+}
+.event{
+  width: 700px;
+  margin: 0 auto;
+  height: 400px;
+}
+
+.foot{
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 11px;
+}
